@@ -71,12 +71,11 @@ names(data)<-gsub("Mag", "Magnitude", names(data))
 names(data)<-gsub("^t", "Time", names(data))
 names(data)<-gsub("^f", "Frequency", names(data))
 
-#test data set 
-names(data)
+
 
 #5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-TidyData<-aggregate(. ~subject + activity, data, mean)
-TidyData<-TidyData[order(TidyData$subject,TidyData$activity),]
+tidydata<-aggregate(. ~subject + activity, data, mean)
+tidydata<-tidydata[order(tidydata$subject,tidydata$activity),]
 
 # Writing second tidy data set in txt file
 write.table(data, file = "tidydata.txt",row.name=FALSE,quote = FALSE, sep = '\t')
